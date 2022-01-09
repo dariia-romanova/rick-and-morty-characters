@@ -1,1 +1,1 @@
-DEMO (https://dariia-romanova.github.io/rick-and-morty-characters)
+[DEMO](https://dariia-romanova.github.io/rick-and-morty-characters)
