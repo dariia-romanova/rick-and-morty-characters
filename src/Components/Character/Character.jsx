@@ -11,12 +11,10 @@ function Character({ character }) {
   const getEpisodes = async () => {
     const allEpisodes = await fectchEpisodes(character.episode);
 
-    console.log('all', allEpisodes);
     setEpisodes(allEpisodes);
   };
 
   useEffect(() => {
-    console.log('episode', character.episode);
     getEpisodes();
   }, []);
 
