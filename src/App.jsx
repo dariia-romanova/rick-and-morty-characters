@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { fectchCharacters } from './api/characters';
 import Characters from './Components/Characters/Characters';
+import Character from './Components/Character/Character';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Rick and Morty</h1>
+      <h1>Rick and Morty Characters</h1>
       {characters.length && (
         <Routes>
           <Route path="/" element={<Characters characters={characters} />} />
@@ -28,7 +29,7 @@ function App() {
             <Route
               key={character.id}
               path={`/characters/${character.id}`}
-              element={<h2>{character.name}</h2>}
+              element={<Character character={character} />}
             />
           ))}
         </Routes>
