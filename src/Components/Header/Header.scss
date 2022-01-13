@@ -1,0 +1,20 @@
+.Header {
+  &__bar {
+    margin-bottom: 30px;
+  }
+
+  &__link {
+    color: #fff;
+    text-decoration: none;
+
+    // &--active {
+    //   &:hover {
+    //     text-decoration: underline;
+    //   }
+    // }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

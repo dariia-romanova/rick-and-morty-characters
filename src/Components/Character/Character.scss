@@ -1,0 +1,51 @@
+.Character {
+  display: grid;
+  justify-content: center;
+  gap: 50px;
+  justify-content: center;
+  grid-template-columns: repeat(3, 300px);
+
+  &__info {
+    padding: 0;
+    grid-column: 2 / 4;
+  }
+
+  &__info-title {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__species {
+    margin-right: 10px;
+    align-items: center;
+
+    &:not(:last-child) {
+      &::after {
+        content: "";
+        margin-left: 10px;
+        width: 1px;
+        height: 14px;
+        display: inline-block;
+        background-color: #777;
+      }
+    }
+  }
+
+  &__episode {
+    padding-right: 10px;
+
+    &::after {
+      content: "";
+      margin-left: 10px;
+      width: 1px;
+      height: 14px;
+      display: inline-block;
+      background-color: #777;
+    }
+  }
+
+  &__episode-code {
+    font-size: 14px;
+    color: #777;
+  }
+}

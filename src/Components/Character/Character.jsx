@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
+import {
+  Card, CardContent, CardMedia,
+} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
 import { fectchEpisodes } from '../../api/episodes';
+
+import './Character.scss';
 
 function Character({ character }) {
   const [episodes, setEpisodes] = useState([]);
@@ -19,38 +23,57 @@ function Character({ character }) {
   }, []);
 
   return (
-    <Box>
-      <Typography variant="h2" component="div" gutterBottom>
-        {character.name}
-      </Typography>
-      <Typography variant="body1" component="div" gutterBottom>
-        {character.species}
-      </Typography>
-      <Typography variant="body1" component="div" gutterBottom>
-        {character.gender}
-      </Typography>
-      {episodes.length && (
-        <Typography variant="body1" component="div" gutterBottom>
-          Episodes
-          {episodes.map((episode) => (
-            <>
-              <p>{episode.episode}</p>
-              <p>{episode.name}</p>
-            </>
-          ))}
+    <Card className="Character">
+      <CardMedia
+        className="Character__image"
+        component="img"
+        image={character.image}
+        alt={character.name}
+      />
+      <CardContent
+        className="Character__info"
+        sx={{ padding: 0 }}
+      >
+        <Typography variant="h3" gutterBottom>
+          {character.name}
         </Typography>
-      )}
-      <Typography variant="body1" component="div" gutterBottom>
-        Location:
-        {character.location.name}
-      </Typography>
-      <Typography variant="body1" component="div" gutterBottom>
-        {character.status}
-      </Typography>
-      <Typography variant="body1" component="div" gutterBottom>
-        {character.created}
-      </Typography>
-    </Box>
+        <Typography variant="h6" gutterBottom>
+          <span className="Character__species">{character.species}</span>
+          <span>{character.gender}</span>
+        </Typography>
+        {episodes.length && (
+          <Typography variant="body1" gutterBottom>
+            <span className="Character__info-title">{'Episodes: '}</span>
+            {episodes.map((episode) => (
+              <span key={episode.id} className="Character__episode">
+                <span className="Character__episode-code">
+                  {episode.episode}
+                </span>
+                {` ${episode.name}`}
+              </span>
+            ))}
+          </Typography>
+        )}
+        <Typography variant="body1" gutterBottom>
+          <span className="Character__info-title">
+            {'Location: '}
+          </span>
+          {character.location.name}
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          <span className="Character__info-title">
+            {'Status: '}
+          </span>
+          {character.status}
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          <span className="Character__info-title">
+            {'Created: '}
+          </span>
+          {character.created.split('T')[0]}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 }
 
